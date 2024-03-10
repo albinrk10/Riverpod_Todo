@@ -12,7 +12,7 @@ class StreamProviderScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Stream Provider'),
       ),
-      body: StreamView(),
+      body: const StreamView(),
     );
   }
 }
