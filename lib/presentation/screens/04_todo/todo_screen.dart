@@ -1,6 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'dart:math';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_rivepord_providers/domain/domain.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:uuid/uuid.dart';
+
+import '../../../config/config.dart';
 import '../../providers/providers.dart';
 
 class TodoScreen extends ConsumerWidget {
@@ -19,7 +24,12 @@ class TodoScreen extends ConsumerWidget {
           ref.watch(todosProvider.notifier).update(
             (state) => [
               ...state,
-
+              //Lo recomendable es que la logica este en el provider no la ui
+              Todo(
+                id: const Uuid().v4(),
+                 description: RandomGenerator.getRandomName(),
+                  completedAt: null,
+                  )
             ]);
         },
       ),

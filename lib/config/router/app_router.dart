@@ -38,12 +38,12 @@ final appRouterProvider = Provider<GoRouter>((ref){
     builder: (context, state) => const StreamProviderScreen(),
   ),
   GoRoute(
-    path: '/change-notifier-provider',
-    builder: (context, state) => const ChangeNotifierScreen(),
-  ),
-  GoRoute(
     path: '/state-notifier-provider',
     builder: (context, state) => const StateNotifierScreen(),
+  ),
+  GoRoute(
+    path: '/change-notifier-provider',
+    builder: (context, state) => const ChangeNotifierScreen(),
   ),
 ]);
 });
