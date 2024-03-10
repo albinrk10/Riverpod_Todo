@@ -9,6 +9,7 @@ class StateProviderScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final counter = ref.watch(counterProvider);
+    final isDarkMode = ref.watch(isDarkModeProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -22,9 +23,12 @@ class StateProviderScreen extends ConsumerWidget {
           ),
           IconButton(
             // icon: const Icon( Icons.light_mode_outlined, size: 100 ),
-            icon: const Icon(Icons.dark_mode_outlined, size: 100),
+            icon: isDarkMode
+                ? const Icon(Icons.dark_mode_outlined, size: 100)
+                : const Icon(Icons.light_mode_outlined, size: 100),
             onPressed: () {
-              ref.read(counterProvider);
+              ref.read(isDarkModeProvider.notifier).update(
+                (state) => !state);
             },
           ),
           const Text('Albin Hinostroza', style: TextStyle(fontSize: 25)),
@@ -35,8 +39,7 @@ class StateProviderScreen extends ConsumerWidget {
             ),
             label: Text('$counter', style: const TextStyle(fontSize: 100)),
             onPressed: () {
-              ref.read(counterProvider.notifier).update(
-                (state) => state + 1);
+              ref.read(counterProvider.notifier).update((state) => state + 1);
             },
           ),
           const Spacer(flex: 2),
