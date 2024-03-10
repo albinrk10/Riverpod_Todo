@@ -1,20 +1,11 @@
 import 'package:flutter/material.dart';
-import 'config/config.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'presentation/screens/app.dart';
 
 
-void main() => runApp(const MyApp());
+void main() => runApp(
+  const ProviderScope(
+    child: App(),
+  ),
+);
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-
-    return MaterialApp.router(
-      title: 'Riverpod Providers',
-      debugShowCheckedModeBanner: false,
-      routerConfig: appRouter,
-      theme: AppTheme( isDarkmode: false ).getTheme(),
-    );
-  }
-}
